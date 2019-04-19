@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Affinity",
+    "version": "1.0",
+    "description": "Affinity will help you keep related tabs together on the same window.",
+    
+    "permissions": [
+        "tabs", 
+        "storage", 
+        "<all_urls>"        
+    ],
+    
+    "background": {
+        "scripts": ["background.js", "tabs.js", "logging.js"],
+        "persistent": false
+    }
+}
