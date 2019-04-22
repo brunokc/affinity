@@ -46,16 +46,16 @@ function positionTab(tab) {
     return;
   }
   
+  // We assume the window ID from the new tab represents the current window ID
+  var currentWindowId = tab.windowId;
+  log("Current windowId=" + currentWindowId);
+  
   var matchDomains = generateMatchDomain(tab.url);
   log("matchDomains = " + matchDomains);
   let q = { 
     url: matchDomains, 
     windowType: "normal" 
   };
-  
-  // We assume the window ID from the new tab represents the current window ID
-  var currentWindowId = tab.windowId;
-  log("Current windowId=" + currentWindowId);
   
   chrome.tabs.query(q, function(tabs) {
     var useCurrentWindow = false;
@@ -64,7 +64,7 @@ function positionTab(tab) {
     
     for (var i = 0; i < tabs.length && tabs[i].id != tab.id; ++i) {
       log("considering tab id=" + tabs[i].id + "; index=" + tabs[i].index + "; windowId=" + 
-      tabs[i].windowId + "; url=" + tabs[i].url);
+        tabs[i].windowId + "; url=" + tabs[i].url);
       
       // Prefer tabs in the current window
       if (tabs[i].windowId === currentWindowId) {
