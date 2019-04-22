@@ -42,7 +42,7 @@ function generateMatchDomain(urlString) {
 
 function positionTab(tab) {
   var url = createUrl(tab.url);
-  if (url == null || (url.protocol !== "http:" && url.protocol !== "https:")) {
+  if (url === null || (url.protocol !== "http:" && url.protocol !== "https:")) {
     return;
   }
 
